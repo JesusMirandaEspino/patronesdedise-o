@@ -1,12 +1,18 @@
 class Miclase {
-    constructor() {
-        this.propiedad = 1;
-        this.metodo = () => {
-            console.log('Hola Mundo');
-        }
+    constructor(pro1, pro2) {
+        this.propiedad = pro1;
+        this.propiedad = pro2;
+    }
+
+
+    metodo = () => {
+        console.log('Hola Mundo');
     }
 }
 
-const instancia = new Miclase();
+const instancia = new Miclase(4, 7);
 
 console.log(instancia);
+
+
+instancia.metodo();
