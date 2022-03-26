@@ -25,3 +25,34 @@ const resultado = (() => {
 resultado.a();
 resultado.b('queso', 'cabra');
 resultado.a();
+
+
+const user = (() => {
+    const recurso = '/user';
+    return {
+        listar: async() => {
+            return await fetch(recurso).then(x => x.json);
+        },
+        crear: async(data) => {
+            return await fetch(recurso, {
+                    type: POST,
+                    body: JSON.stringify(data)
+                })
+                .then(x => x.json);
+        }
+    }
+})();
+
+
+const perro = {
+    raza: 'Perro loco',
+    ladrar: function() {
+        console.log(`hola soy un ${perro.raza}`);
+    }
+}
+
+const killman = Object.create(perro);
+
+killman.ladrar();
+killman.raza = 'Super perro';
+killman.ladrar();
