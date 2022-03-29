@@ -26,7 +26,6 @@ resultado.a();
 resultado.b('queso', 'cabra');
 resultado.a();
 
-
 const user = (() => {
     const recurso = '/user';
     return {
