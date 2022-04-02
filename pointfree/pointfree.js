@@ -16,6 +16,9 @@ const manejaResultado = (resultado) => {
 
 f('/user', manejaResultado);
 
+
+const compose = (...fns) => x => fns.reduceRight((y, f) => f(y), x);
+const filtrar = f => xs => xs.filter(f);
 const head = xs => xs[0];
 const formateo = x => ({
     nombre: `${x.nombre} ${x.apellido}`,
@@ -23,9 +26,14 @@ const formateo = x => ({
 });
 const ImprimirInfante = x => `El nombre del infante es ${x.nombre}, y su edad es de ${x.edad} años`;
 
-const traeElPrimerInfante = (data) => {
-    return ImprimirInfante(formateo(head(data.filter(x => x.edad < 5))));
-}
+const traeElPrimerInfante = compose(
+        ImprimirInfante,
+        formateo,
+        head,
+        filtrar(x => x.edad < 5)
+    )
+    // prueba ImprimirInfante(formateo(head(data.filter(x => x.edad < 5))));
+
 
 
 
