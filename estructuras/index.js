@@ -70,13 +70,47 @@ const get = url = new Promise( (resolve, reject) => {
 
         res.on( 'end', d => {
             const parsed = JSON.parse(body);
-            console.log(parsed);
+            resolve(parsed);
         });
     });
 
     req.on( 'error', (e) => {
-        console.log(e);
+        reject(e);
     });
 
     req.end();
 });
+
+
+
+class Api2 {
+    constructor(){
+        this.get = (url, opts) => {
+            //  code function
+        };
+        this.post = (url, opts) => {
+            //  code function
+        };
+    }
+}
+
+
+// adaptador
+
+class ApiAdapter {
+
+    constructor(){
+        const api2 = new Api2();
+
+        this.operations = ( url, opts, verb ) => {
+            switch( verb ){
+                case 'get':
+                    return api2.get( url, opts );
+                case 'post':
+                    return api2.post( url, opts );
+                default: return;
+            }
+        }
+    }
+    
+}
