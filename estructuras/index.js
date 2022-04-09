@@ -24,4 +24,23 @@ user.saludar();
 
 
 // Decorador
+class MacBook {
+    precio(){
+        return 1000;
+    }
+}
+
+const memoria = mac => {
+    const v = mac.precio;
+
+    mac.precio = () => {
+        return v + 100;
+    }
+
+}
+
+const macbook = new MacBook();
+console.log(macbook.precio);
+memoria( macbook );
+console.log(macbook.precio);
 
