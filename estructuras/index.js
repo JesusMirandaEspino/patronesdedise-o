@@ -44,3 +44,39 @@ console.log(macbook.precio);
 memoria( macbook );
 console.log(macbook.precio);
 
+
+// Facade
+
+const https = require('http');
+
+
+
+const get = url = new Promise( (resolve, reject) => {
+    const comp = url.splice('/');
+    const host = comp[0];
+    const options = {
+        hostname: host,
+        path: `/${comp.join('/')}`,
+        method: 'GET'
+    }
+
+
+    const req = https.request(options, res => {
+        res.setEncoding('utf8');
+        let body = '';
+        res.on( 'data', d => {
+            body += d;
+        });
+
+        res.on( 'end', d => {
+            const parsed = JSON.parse(body);
+            console.log(parsed);
+        });
+    });
+
+    req.on( 'error', (e) => {
+        console.log(e);
+    });
+
+    req.end();
+});
