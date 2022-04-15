@@ -93,3 +93,21 @@ class Suma {
 const valor = new Suma(1);
 console.log( valor.suma(2).suma(2).suma(2).suma(2).suma(2).val );
 
+
+// iterador
+function* iterador(){
+    let nextIndex = 0;
+
+    while( nextIndex < col.length){
+        yield  col[ nextIndex++ ]
+    }
+}
+
+
+const x = [ 1,2,3,4,5,6,7,8,9 ];
+const gent = iterador(x);
+
+console.log( gen.nextIndex(x) );
+console.log( gen.nextIndex(x) );
+console.log( gen.nextIndex(x) );
+console.log( gen.nextIndex(x) );
