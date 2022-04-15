@@ -48,3 +48,48 @@ const emiter = ( () => {
 
 emiter.on( 'hola', x => console.log(x) );
 emiter.emit('event', { hola: 'hola' });
+
+
+
+
+// comando
+const commander = ( () => {
+    const o = {
+        comprar: x => {
+            console.log(`comprando ${x}`);
+        },
+        vender: x => {
+            console.log(`vendiendo ${x}`);
+        } 
+    }
+
+    return {
+        run: ( comando, argumentos ) => {
+            if( !o[comando] ){
+                console.log( 'comando no existe' );
+                return;
+            }
+            o[comando](argumentos)
+        }
+    }
+
+
+})();
+
+
+// cadena de responsabilidad
+class Suma {
+    constructor( v = 0 ){
+        this.val = v;
+    }
+    suma(v){
+        this.val += v;
+        return this;
+    }
+
+}
+
+
+const valor = new Suma(1);
+console.log( valor.suma(2).suma(2).suma(2).suma(2).suma(2).val );
+
