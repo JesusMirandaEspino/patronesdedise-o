@@ -19,3 +19,15 @@ const resultados12 = (()=>{
 })()
 
 
+const saludar = name => console.log( `hola soy ${name}` );
+
+class Persona {
+    constructor(){
+        this.nombre = 'Jesus';
+    }
+
+    saludar(){
+        saludar(this.nombre)
+    }
+}
+
