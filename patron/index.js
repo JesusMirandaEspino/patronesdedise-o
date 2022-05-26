@@ -20,14 +20,29 @@ const resultados12 = (()=>{
 
 
 const saludar = name => console.log( `hola soy ${name}` );
+const despedirse = nombre => console.log( `nos vemos ${nombre}` );
 
 class Persona {
     constructor(){
         this.nombre = 'Jesus';
+        this.otro = 'Mutuelo';
     }
 
     saludar(){
-        saludar(this.nombre)
+        saludar(this.nombre);
+    }
+
+    despedir(){
+        despedirse(this.otro);
     }
 }
+
+
+const personajes = {
+    a: 1
+}
+
+personajes.c = 3;
+
+const personajes2 = { ...personajes, b: 2 }
 
